@@ -414,3 +414,78 @@ export function NoteArrow({ className = '' }) {
     </svg>
   )
 }
+
+/* ------------------------------------------------------------------ *
+ *  Gold line glyphs for the statistics bar.
+ *
+ *  Drawn in the same thin botanical language as the still-life above
+ *  instead of borrowing generic UI icons, and stroked with
+ *  `currentColor` so the stylesheet stays in charge of the colour.
+ * ------------------------------------------------------------------ */
+
+function StatGlyph({ size = 22, className = '', children }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  )
+}
+
+/** A young shoot - the signature herbal products we make. */
+export function StatSprout(props) {
+  return (
+    <StatGlyph {...props}>
+      <path d="M16 28.4V15" />
+      <path d="M16 18.2c0-5 3.3-8.9 8.2-9.7.8 5.3-3 9.5-8.2 9.7Z" />
+      <path d="M16 22.6c0-4.2-2.6-7.6-6.8-8.3-.7 4.4 2.5 8.1 6.8 8.3Z" />
+      <path d="M10.6 28.4h10.8" />
+    </StatGlyph>
+  )
+}
+
+/** One veined leaf - the natural, chemical free claim. */
+export function StatLeaf(props) {
+  return (
+    <StatGlyph {...props}>
+      <path d="M26.6 4.2C14.4 5.4 6.6 11.9 5.8 24.3c-.1 2.2 1.6 3.9 3.8 3.9C21.7 27 28 18.3 26.6 4.2Z" />
+      <path d="M25.2 6.8C18.8 12.2 12.9 18.7 8.6 26" />
+      <path d="M14.2 15.5 10.4 13.6" />
+      <path d="M19.4 10.6 15.6 8.7" />
+    </StatGlyph>
+  )
+}
+
+/** Stone mortar and pestle - nothing is heated, nothing is preserved. */
+export function StatMortar(props) {
+  return (
+    <StatGlyph {...props}>
+      <path d="M4.2 13.4h23.6" />
+      <path d="M5.8 13.4c.5 6.2 4.7 10.5 10.2 10.5s9.7-4.3 10.2-10.5" />
+      <path d="M12.2 23.9h7.6" />
+      <path d="M19.6 13.2 24.6 6.2" />
+      <circle cx="25.5" cy="5" r="2.1" />
+    </StatGlyph>
+  )
+}
+
+/** A message bubble holding a leaf - the WhatsApp order messages. */
+export function StatMessage(props) {
+  return (
+    <StatGlyph {...props}>
+      <path d="M27 14.2c0 5.5-5.1 10-11.4 10-1.4 0-2.8-.2-4.1-.7L5.6 26l1.9-4.5a9.7 9.7 0 0 1-3.6-7.3C3.9 8.7 8.9 4.2 15.3 4.2S27 8.7 27 14.2Z" />
+      <path d="M21 9.6c-3.2.4-5.4 2.2-5.9 5.1 3.3.4 5.6-1.6 5.9-5.1Z" />
+      <path d="M20.3 10.5c-1.4 1.2-2.7 2.6-3.8 4.3" />
+    </StatGlyph>
+  )
+}

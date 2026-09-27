@@ -8,6 +8,7 @@ import SectionHeading from '../components/ui/SectionHeading.jsx'
 import Reveal from '../components/ui/Reveal.jsx'
 import WhatsAppIcon from '../components/ui/WhatsAppIcon.jsx'
 import { Branch } from '../components/art/Ornaments.jsx'
+import { LeafMark } from '../components/art/Ornaments.jsx'
 
 const initialForm = { name: '', place: '', quantity: '', note: '' }
 
@@ -61,7 +62,7 @@ export default function Order() {
 
       <div className="container">
         <SectionHeading
-          eyebrow="Order & Contact"
+          eyebrow="ORDER & CONTACT"
           title="Two taps and it is"
           highlight="on the way"
           tamil="வாட்ஸ்அப் ஆர்டர்"
@@ -71,6 +72,13 @@ export default function Order() {
         <div className="order__grid">
           <Reveal direction="right" duration={0.9}>
             <form className="order-form" onSubmit={submit}>
+              <div className="order-form__header">
+                <span className="order-form__label">START YOUR ORDER</span>
+                <p className="order-form__sub">
+                  Tell us what you need and we'll prepare your WhatsApp order.
+                </p>
+              </div>
+
               <div className="order-form__row">
                 <label className="field">
                   <span>Your name *</span>
@@ -141,7 +149,7 @@ export default function Order() {
               <motion.button
                 type="submit"
                 className="btn btn--whatsapp btn--lg btn--block"
-                whileHover={reduce ? undefined : { scale: 1.015 }}
+                whileHover={reduce ? undefined : { scale: 1.015, boxShadow: '0 22px 40px -18px rgba(18, 140, 74, 0.85)' }}
                 whileTap={{ scale: 0.985 }}
               >
                 <Send size={18} />
@@ -156,7 +164,7 @@ export default function Order() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <Check size={16} /> WhatsApp should be opening with your order. We&apos;ll reply shortly!
+                    <Check size={16} /> WhatsApp should be opening with your order. We'll reply shortly!
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -181,7 +189,7 @@ export default function Order() {
 
               <ul className="order-aside__list">
                 <li>
-                  <Check size={16} /> 100% organic &amp; homemade
+                  <Check size={16} /> 100% organic & homemade
                 </li>
                 <li>
                   <Check size={16} /> No chemicals or preservatives
@@ -190,7 +198,7 @@ export default function Order() {
                   <Check size={16} /> Suitable for all ages
                 </li>
                 <li>
-                  <Check size={16} /> Price &amp; pack sizes shared on chat
+                  <Check size={16} /> Price & pack sizes shared on chat
                 </li>
               </ul>
 
