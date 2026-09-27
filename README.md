@@ -28,7 +28,6 @@ Requirements: Node 18+ (tested on Node 26) and npm.
 | Navbar | Glass blur on scroll, animated active-section dot, mobile drawer |
 | Hero | Parallax layers, floating leaves, blurred headline reveal, real photograph of the four products with floating labels, seal badge |
 | Marquee | Endless ribbon: 100% Natural · Chemical Free · Organic · Homemade |
-| Our Story | Parallax bowl artwork, animated counters (stats bar) |
 | Products | 4 tilt-on-hover cards, floating SVG artwork, detail modal, WhatsApp order per product |
 | Showcase | The real printed posters, full width, switched with product pills |
 | Ingredients | Infinite marquee of 8 botanicals with hand-drawn SVG glyphs |
@@ -77,7 +76,7 @@ src/
     Marquee.jsx    LeafRain.jsx
     art/           Ornaments.jsx (seal, leaves, vines), SplashArt.jsx (splash seal + herbal flanks), ProductArt.jsx (product drawings)
     ui/            Reveal.jsx, SectionHeading.jsx, TiltCard.jsx, Counter.jsx, WhatsAppIcon.jsx
-  sections/        Hero, HeroStage, About, Products, ProductModal, Showcase, Ingredients,
+  sections/        Hero, HeroStage, Products, ProductModal, Showcase, Ingredients,
                    Benefits, Ritual, TamilBand, Testimonials, Order, Footer
   data/            site.js, products.js, content.js
   assets/          product posters (one PNG per product, Showcase band) + hero-stage.jpg

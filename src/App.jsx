@@ -7,7 +7,6 @@ import Cursor from './components/Cursor.jsx'
 import Navbar from './components/Navbar.jsx'
 import Marquee from './components/Marquee.jsx'
 import Hero from './sections/Hero.jsx'
-import About from './sections/About.jsx'
 import Products from './sections/Products.jsx'
 import ProductModal from './sections/ProductModal.jsx'
 import Showcase from './sections/Showcase.jsx'
@@ -80,7 +79,6 @@ export default function App() {
           className="marquee--leaf"
         />
 
-        <About />
         <Products onSelect={setActiveProduct} />
         <Showcase onSelect={setActiveProduct} />
         <Ingredients />

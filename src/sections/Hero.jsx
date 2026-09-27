@@ -133,7 +133,7 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      <button className="hero__scroll" onClick={() => scrollToId('about')} aria-label="Scroll down">
+      <button className="hero__scroll" onClick={() => scrollToId('products')} aria-label="Scroll down">
         <span className="hero__scroll-text">Scroll</span>
         <span className="hero__scroll-line">
           <motion.span

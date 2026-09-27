@@ -13,7 +13,6 @@ export const site = {
 
 export const navLinks = [
   { id: 'home', label: 'Home' },
-  { id: 'about', label: 'Our Story' },
   { id: 'products', label: 'Products' },
   { id: 'ingredients', label: 'Ingredients' },
   { id: 'why', label: 'Why Us' },
