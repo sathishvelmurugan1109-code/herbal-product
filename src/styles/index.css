@@ -1,4 +1,4 @@
-﻿/* =====================================================================
+/* =====================================================================
    Keerthika Sai Herbal Products - global stylesheet
    ===================================================================== */
 :root {
@@ -635,6 +635,13 @@ h5 {
 }
 
 /* ------------------------ botanical side still-lives -------------- */
+.preloader__flanks {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .preloader__side {
   position: absolute;
   bottom: -2%;
@@ -690,13 +697,13 @@ h5 {
   text-align: center;
 }
 
-.preloader__seal-wrap {
+.preloader__logo-wrap {
   position: relative;
   display: grid;
   place-items: center;
 }
 
-.preloader__halo {
+.preloader__gold-halo {
   position: absolute;
   inset: -30%;
   border-radius: 50%;
@@ -706,7 +713,7 @@ h5 {
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
-.preloader.is-closing .preloader__halo {
+.preloader.is-closing .preloader__gold-halo {
   opacity: 1;
   transform: scale(1.16);
 }
@@ -719,29 +726,60 @@ h5 {
   filter: drop-shadow(0 0 16px rgba(230, 205, 140, 0.34));
 }
 
-.preloader__brand {
-  margin: 4px 0 0;
+/* KEERTHIKA Sai - the strongest type on the screen */
+.preloader__logo-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0 0.3em;
+  margin-top: clamp(6px, 1.1vh, 12px);
   font-family: var(--font-serif);
   font-weight: 600;
   font-size: clamp(1.65rem, 3.6vw, 2.6rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  line-height: 1.1;
   color: var(--cream);
   text-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
 }
 
-.preloader__brand span {
+.preloader__keerthika {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.preloader__sai {
   font-style: italic;
   font-weight: 500;
-  text-transform: none;
   letter-spacing: 0.03em;
+  text-transform: none;
   color: var(--gold-2);
 }
 
-.preloader__sub {
+/* HERBAL PRODUCTS, flanked by two thin gold rules */
+.preloader__category {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: clamp(12px, 2.4vw, 18px);
+  margin: 0;
+}
+
+.preloader__category::before,
+.preloader__category::after {
+  content: '';
+  display: block;
+  width: clamp(26px, 6vw, 58px);
+  height: 1px;
+}
+
+.preloader__category::before {
+  background: linear-gradient(90deg, rgba(200, 162, 74, 0), var(--gold));
+}
+
+.preloader__category::after {
+  background: linear-gradient(270deg, rgba(200, 162, 74, 0), var(--gold));
+}
+
+.preloader__category-text {
   font-size: clamp(0.58rem, 1.2vw, 0.72rem);
   font-weight: 300;
   letter-spacing: 0.44em;
@@ -749,25 +787,8 @@ h5 {
   color: rgba(247, 242, 228, 0.72);
 }
 
-.preloader__rule {
-  display: block;
-  width: clamp(26px, 6vw, 58px);
-  height: 1px;
-  background: linear-gradient(90deg, rgba(200, 162, 74, 0), var(--gold));
-}
-
-.preloader__rule--flip {
-  background: linear-gradient(270deg, rgba(200, 162, 74, 0), var(--gold));
-}
-
-.preloader__mark {
-  color: var(--gold);
-  line-height: 0;
-  opacity: 0.9;
-}
-
 /* ------------------------- progress capsule ---------------------- */
-.preloader__progress {
+.preloader__progress-wrapper {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -901,13 +922,16 @@ h5 {
     display: none;
   }
 
-  .preloader__progress {
+  .preloader__progress-wrapper {
     width: min(340px, 84vw);
     gap: 10px;
   }
 
-  .preloader__sub {
+  .preloader__category {
     gap: 9px;
+  }
+
+  .preloader__category-text {
     letter-spacing: 0.34em;
   }
 }
@@ -917,11 +941,15 @@ h5 {
     width: 84px;
   }
 
-  .preloader__brand {
-    letter-spacing: 0.09em;
+  .preloader__logo-text {
+    font-size: 1.5rem;
   }
 
-  .preloader__progress {
+  .preloader__keerthika {
+    letter-spacing: 0.08em;
+  }
+
+  .preloader__progress-wrapper {
     width: 86vw;
   }
 
@@ -1171,7 +1199,7 @@ h5 {
 }
 
 .drawer__link::after {
-  content: 'â†’';
+  content: '→';
   font-family: var(--font-sans);
   font-size: 1rem;
   color: var(--gold);
@@ -4656,7 +4684,7 @@ h5 {
 
 .tamil-card h3 {
   font-family: var(--font-tamil);
-  /* sized so the longest Tamil title ("à®®à¯†à®©à¯à®®à¯ˆ & à®ªà®³à®ªà®³à®ªà¯à®ªà¯") still clears a
+  /* sized so the longest Tamil title ("மென்மை & பளபளப்பு") still clears a
      single line, which keeps the four titles aligned across the row */
   font-size: clamp(0.95rem, 1.12vw, 1.04rem);
   font-weight: 600;
@@ -5024,6 +5052,11 @@ h5 {
   font-size: 0.58rem;
   font-weight: 600;
   letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--rv-gold);
+  border: 1px solid rgba(200, 157, 60, 0.4);
+  background: rgba(200, 157, 60, 0.1);
+}
 
 /* ---------------------------- active card --------------------------- */
 .reviews__card {
@@ -5164,6 +5197,13 @@ h5 {
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: #fbf7ee;
+  background: linear-gradient(140deg, var(--rv-forest-2), var(--rv-forest));
+  border: 1px solid rgba(200, 157, 60, 0.62);
+  box-shadow: 0 14px 24px -16px rgba(18, 58, 39, 0.85);
+}
 
 /* ------------------------------- badge ------------------------------- */
 .reviews__badge {
@@ -5388,14 +5428,6 @@ h5 {
   border: 0;
 }
 
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  color: #fbf7ee;
-  background: linear-gradient(140deg, var(--rv-forest-2), var(--rv-forest));
-  border: 1px solid rgba(200, 157, 60, 0.62);
-  box-shadow: 0 14px 24px -16px rgba(18, 58, 39, 0.85);
-}
-
 .reviews__who strong {
   display: block;
   font-family: var(--font-serif);
@@ -5408,12 +5440,6 @@ h5 {
   font-size: 0.8rem;
   letter-spacing: 0.05em;
   color: var(--rv-ink-soft);
-}
-
-  text-transform: uppercase;
-  color: var(--rv-gold);
-  border: 1px solid rgba(200, 157, 60, 0.4);
-  background: rgba(200, 157, 60, 0.1);
 }
 
 .reviews__side .reviews__stars {
@@ -5464,37 +5490,417 @@ h5 {
   color: var(--rv-forest);
 }
 
+/* =====================================================================
+   Kind words - responsive.  Only the geometry of the stage changes here,
+   so the three card editorial view is declared widest first and every
+   later block wins on the narrower viewport.
+
+     1440  the stage can breathe: wider neighbours, deeper peek
+     1240  the neighbours step in so the active card keeps its column
+     1080  a tighter stage: 236px neighbours, shallower peek
+      900  the neighbours leave and the active card takes the width alone
+      620  phones: one card per view, the big decor steps aside
+      400  narrow phones: tighter type, controls and badge
+   ===================================================================== */
+@media (min-width: 1440px) {
+  .reviews {
+    --rv-side: 320px;
+    --rv-peek: 148px;
+  }
+
+  .reviews__center {
+    flex-basis: 860px;
+  }
+}
+
+@media (max-width: 1240px) {
+  .reviews {
+    --rv-side: 268px;
+    --rv-peek: 112px;
+  }
+}
+
+@media (max-width: 1080px) {
+  .reviews {
+    --rv-side: 236px;
+    --rv-peek: 88px;
+  }
+
+  .reviews__center {
+    flex-basis: 680px;
+  }
+}
+
+@media (max-width: 900px) {
+  /* the faded neighbours are decoration - at this width they would
+     squeeze the quote column until the card stopped being readable */
+  .reviews__side {
+    display: none;
+  }
+
+  .reviews__center {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .reviews__badge {
+    width: 92px;
+    height: 92px;
+    padding: 10px;
+  }
+
+  .reviews__art {
+    opacity: 0.32;
+  }
+}
+
+@media (max-width: 620px) {
+  /* nothing decorative may crowd the single card on a phone */
+  .reviews__art {
+    display: none;
+  }
+
+  .reviews__branch {
+    opacity: 0.1;
+  }
+
+  .reviews__medal--hibiscus {
+    left: 2%;
+    bottom: 24%;
+  }
+
+  .reviews__medal--amla {
+    left: 1%;
+    bottom: 40%;
+  }
+
+  .reviews__card {
+    min-height: 0;
+    gap: 14px;
+    padding: 36px 20px 28px;
+    border-radius: 26px;
+  }
+
+  .reviews__quote {
+    width: 58px;
+    height: 58px;
+  }
+
+  .reviews__quote svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .reviews__text {
+    font-size: 1.14rem;
+  }
+
+  .reviews__avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+
+  .reviews__who strong {
+    font-size: 1.02rem;
+  }
+
+  .reviews__sprig {
+    width: 42px;
+  }
+
+  .reviews__badge {
+    width: 78px;
+    height: 78px;
+    padding: 8px;
+  }
+
+  .reviews__badge svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .reviews__badge-text {
+    font-size: 0.5rem;
+    letter-spacing: 0.14em;
+  }
+
+  .reviews__nav {
+    width: 46px;
+    height: 46px;
+  }
+
+  .reviews__dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .reviews__dot.is-active {
+    width: 24px;
+  }
+
+  .reviews__note {
+    padding: 12px 15px;
+    font-size: 0.78rem;
+  }
+
+  /* stacked points read better without the inline dividers */
+  .reviews__strip {
+    flex-direction: column;
+    gap: 13px;
+    padding: 20px 18px;
+    border-radius: 24px;
+  }
+
+  .reviews__strip-sep {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .reviews__card {
+    padding: 30px 16px 24px;
+    border-radius: 22px;
+  }
+
+  .reviews__quote {
+    width: 50px;
+    height: 50px;
+  }
+
+  .reviews__text {
+    font-size: 1.06rem;
+  }
+
+  .reviews__badge {
+    width: 70px;
+    height: 70px;
+  }
+
+  .reviews__badge-text {
+    font-size: 0.46rem;
+    letter-spacing: 0.1em;
+  }
+
+  .reviews__controls {
+    gap: 12px;
+  }
+
+  .reviews__nav {
+    width: 42px;
+    height: 42px;
+  }
+
+  .reviews__dots {
+    gap: 7px;
+  }
+
+  .reviews__strip-text strong {
+    font-size: 0.8rem;
+  }
+}
+
+
 
 
 /* ------------------------------ order ---------------------------- */
+/*
+ * The ordering scene: warm cream ground, herbal still-lives leaning on the
+ * edges, a bespoke gold header, the ivory form on the left and the deep
+ * forest WhatsApp panel on the right.  Scoped to .order throughout.
+ */
 .order {
+  --or-cream: #f7f3e6;
+  --or-cream-2: #eef1de;
+  --or-cream-3: #e4e9d0;
+  --or-sage: #d6e0c0;
+  --or-forest: #0f3020;
+  --or-forest-2: #173d28;
+  --or-forest-3: #214d33;
+  --or-gold: #c79a3b;
+  --or-gold-2: #d9b55b;
   position: relative;
-  background: linear-gradient(180deg, transparent, rgba(238, 230, 211, 0.6));
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 12%, rgba(214, 224, 192, 0.75), transparent 62%),
+    linear-gradient(180deg, var(--or-cream) 0%, #f3f1e0 60%, var(--or-cream) 100%);
 }
 
 .order__bg {
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
+.order__glow {
+  position: absolute;
+  left: 50%;
+  bottom: -18%;
+  width: min(900px, 96vw);
+  aspect-ratio: 1 / 0.62;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(124, 152, 133, 0.24), transparent 68%);
+  filter: blur(30px);
+}
+
+/* the two herbal still-lives that frame the section edges */
+.order__plate {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.32;
+}
+
+.order__plate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order__plate--left {
+  left: -8%;
+  bottom: 4%;
+  width: clamp(180px, 22vw, 320px);
+  aspect-ratio: 1;
+  filter: blur(1px);
+  transform: rotate(-6deg);
+}
+
+.order__plate--right {
+  right: -7%;
+  top: 6%;
+  width: clamp(160px, 19vw, 280px);
+  aspect-ratio: 1;
+  filter: blur(1.5px);
+  transform: rotate(7deg);
+}
+
+/* --------------------------- section head ------------------------ */
+.order__head {
+  position: relative;
+  z-index: 2;
+}
+
+/* the handwritten editorial line on the left of the heading */
+.order__note {
+  position: absolute;
+  left: 0;
+  top: 46%;
+  transform: rotate(-4deg);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.6vw, 1.32rem);
+  line-height: 1.4;
+  color: rgba(95, 143, 90, 0.75);
+  pointer-events: none;
+}
+
+/* the circular botanical badge on the right */
+.order__badge {
+  position: absolute;
+  right: 0;
+  top: 24%;
+  width: 138px;
+  height: 138px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(199, 154, 59, 0.5);
+  background: radial-gradient(circle, rgba(247, 243, 230, 0.9), rgba(228, 233, 208, 0.55));
+  box-shadow: inset 0 0 0 5px rgba(199, 154, 59, 0.12), 0 18px 34px -24px rgba(15, 48, 32, 0.6);
+  transform: rotate(-3deg);
+  text-align: center;
+  pointer-events: none;
+}
+
+.order__badge-text {
+  font-family: var(--font-sans);
+  font-size: 0.56rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(23, 61, 40, 0.78);
+}
+
+.order__eyebrow-leaf {
+  flex: none;
+  color: var(--or-gold);
+}
+
+/* --------------------------- order grid -------------------------- */
 .order__grid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.22fr 1fr;
   gap: clamp(20px, 3vw, 34px);
   align-items: start;
 }
 
 .order-form {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: clamp(22px, 3.4vw, 34px);
-  border-radius: var(--radius-lg);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(20, 48, 31, 0.08);
-  box-shadow: var(--shadow);
+  padding: clamp(24px, 3.6vw, 38px);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(228, 233, 208, 0.75), transparent 46%),
+    radial-gradient(circle at 0% 100%, rgba(214, 224, 192, 0.42), transparent 46%),
+    linear-gradient(180deg, #fffdf7, #f9f5e9);
+  border: 1px solid rgba(199, 154, 59, 0.34);
+  box-shadow: 0 34px 64px -44px rgba(15, 48, 32, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+/* the pressed-plant hairline in the bottom-right corner of the card */
+.order-form__lineart {
+  position: absolute;
+  right: 4px;
+  bottom: 2px;
+  z-index: 0;
+  width: 96px;
+  height: auto;
+  color: rgba(124, 152, 133, 0.32);
+  pointer-events: none;
+}
+
+.order-form > *:not(.order-form__lineart) {
+  position: relative;
+  z-index: 1;
+}
+
+.order-form__header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(199, 154, 59, 0.24);
+}
+
+.order-form__label {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--or-gold);
+}
+
+.order-form__sub {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
 }
 
 .order-form__row {
@@ -5506,33 +5912,67 @@ h5 {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 
-.field span {
-  font-size: 0.74rem;
+/* the label line only - the icon wrapper is a span too, so keep it out */
+.field > span:first-child {
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--sage);
+  color: rgba(95, 143, 90, 0.95);
+}
+
+.field__control {
+  position: relative;
+  display: block;
+}
+
+.field__icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(124, 152, 133, 0.95);
+  pointer-events: none;
+  transition: color 0.3s ease;
 }
 
 .field input,
 .field textarea {
-  padding: 13px 16px;
+  width: 100%;
+  padding: 14px 16px;
+  min-height: 52px;
   border-radius: 14px;
   border: 1px solid rgba(20, 48, 31, 0.14);
-  background: rgba(251, 247, 238, 0.7);
+  background: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-sans);
   font-size: 0.95rem;
+  color: var(--ink);
   resize: vertical;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.field__control input {
+  padding-left: 44px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(74, 89, 71, 0.5);
 }
 
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: var(--leaf);
+  border-color: var(--or-forest-3);
   background: #fff;
-  box-shadow: 0 0 0 4px rgba(124, 152, 133, 0.18);
+  box-shadow: 0 0 0 4px rgba(33, 77, 51, 0.14);
+}
+
+.field__control:focus-within .field__icon {
+  color: var(--or-forest-3);
 }
 
 .order-form__products {
@@ -5540,11 +5980,12 @@ h5 {
 }
 
 .order-form__products legend {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
+  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--sage);
-  margin-bottom: 10px;
+  color: rgba(95, 143, 90, 0.95);
+  margin-bottom: 12px;
 }
 
 .chip-grid {
@@ -5557,29 +5998,37 @@ h5 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 16px;
+  min-height: 46px;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(20, 48, 31, 0.14);
-  background: rgba(251, 247, 238, 0.8);
+  border: 1px solid rgba(20, 48, 31, 0.16);
+  background: rgba(255, 255, 255, 0.78);
   font-size: 0.88rem;
   color: var(--ink-soft);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease, color 0.3s ease;
 }
 
 .chip:hover {
-  border-color: var(--gold);
+  border-color: var(--or-gold);
   transform: translateY(-2px);
+  box-shadow: 0 12px 22px -16px rgba(15, 48, 32, 0.6);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--or-gold);
+  outline-offset: 3px;
 }
 
 .chip.is-on {
-  background: linear-gradient(135deg, var(--forest), var(--forest-2));
-  border-color: var(--forest-2);
+  background: linear-gradient(135deg, var(--or-forest-3), var(--or-forest-2) 60%, var(--or-forest));
+  border-color: rgba(217, 181, 91, 0.55);
   color: var(--cream);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 14px 26px -18px rgba(15, 48, 32, 0.85);
 }
 
 .chip__tick {
-  color: var(--gold-2);
+  color: var(--or-gold-2);
 }
 
 .order-form__error {
@@ -5595,74 +6044,154 @@ h5 {
   color: var(--wa-dark);
 }
 
+/* the main CTA: a taller, richer botanical green than the site default */
+.order .btn--whatsapp {
+  min-height: 58px;
+  border-radius: 19px;
+  padding: 0 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fbf7ee;
+  background: linear-gradient(135deg, #2a7d4c 0%, #1d5b37 52%, #14432a 100%);
+  border: 1px solid rgba(229, 202, 130, 0.32);
+  box-shadow: 0 20px 38px -20px rgba(15, 48, 32, 0.85);
+}
+
+.order .btn--whatsapp:hover {
+  background: linear-gradient(135deg, #33975a 0%, #22693f 52%, #174d30 100%);
+  box-shadow: 0 24px 44px -20px rgba(38, 122, 76, 0.75);
+}
+
+.order .btn--whatsapp:active {
+  transform: scale(0.98);
+}
+
+.order .btn--whatsapp:focus-visible {
+  outline: 2px solid var(--or-gold);
+  outline-offset: 3px;
+}
+
 /* order aside */
 .order-aside {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: clamp(22px, 3.4vw, 32px);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, var(--forest-3), var(--forest) 55%, #17402a);
+  padding: clamp(24px, 3.6vw, 34px);
+  border-radius: 34px;
+  border: 1px solid rgba(200, 157, 60, 0.42);
+  background:
+    radial-gradient(circle at 82% 0%, rgba(58, 122, 79, 0.45), transparent 54%),
+    linear-gradient(160deg, #092719 0%, #103a26 55%, #0b2f1e 100%);
   color: var(--cream);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 40px 70px -44px rgba(9, 39, 25, 0.95);
+}
+
+/* a faint leaf silhouette pressed into the panel */
+.order-aside::before {
+  content: '';
+  position: absolute;
+  right: -42px;
+  bottom: -34px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 202, 130, 0.1), transparent 62%);
+  pointer-events: none;
+}
+
+.order-aside::after {
+  content: '';
+  position: absolute;
+  left: -28px;
+  top: -28px;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(94, 165, 118, 0.16), transparent 64%);
+  pointer-events: none;
+}
+
+.order-aside > * {
+  position: relative;
+  z-index: 1;
 }
 
 .order-aside__seal {
-  width: 68px;
-  height: 68px;
+  width: 72px;
+  height: 72px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: rgba(37, 211, 102, 0.16);
   border: 1px solid rgba(37, 211, 102, 0.4);
   color: var(--wa);
+  box-shadow: 0 0 0 5px rgba(37, 211, 102, 0.06);
 }
 
 .order-aside h3 {
-  font-size: 1.7rem;
+  font-size: clamp(1.5rem, 2.6vw, 1.8rem);
   color: var(--cream);
 }
 
 .order-aside__phone {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  min-height: 48px;
   font-family: var(--font-serif);
   font-size: clamp(1.3rem, 2.6vw, 1.7rem);
   color: var(--gold-2);
+  transition: color 0.3s ease;
 }
 
 .order-aside__phone:hover {
   color: #fff;
 }
 
+.order-aside__phone:focus-visible {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
 .order-aside__list {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
   border-top: 1px solid rgba(230, 205, 140, 0.22);
   border-bottom: 1px solid rgba(230, 205, 140, 0.22);
-  padding: 16px 0;
+  padding: 14px 0;
 }
 
 .order-aside__list li {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-height: 38px;
   font-size: 0.9rem;
-  color: rgba(251, 247, 238, 0.82);
+  color: rgba(251, 247, 238, 0.84);
 }
 
 .order-aside__list svg {
+  flex: none;
   color: var(--gold-2);
 }
 
 .order-aside__hours {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 8px;
   font-size: 0.82rem;
-  color: rgba(251, 247, 238, 0.66);
+  line-height: 1.6;
+  color: rgba(251, 247, 238, 0.68);
+}
+
+.order-aside__hours svg {
+  flex: none;
+  margin-top: 2px;
 }
 
 .order-aside__quick {
@@ -5677,123 +6206,791 @@ h5 {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
+  min-height: 48px;
   padding: 11px 16px;
   border-radius: 14px;
   background: rgba(251, 247, 238, 0.08);
   border: 1px solid rgba(230, 205, 140, 0.2);
   font-size: 0.88rem;
   color: rgba(251, 247, 238, 0.9);
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .quick-link:hover {
   background: rgba(37, 211, 102, 0.18);
-  border-color: rgba(37, 211, 102, 0.5);
-  transform: translateX(4px);
+  border-color: rgba(229, 202, 130, 0.6);
+  transform: translateX(3px);
+}
+
+.quick-link:focus-visible {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 2px;
 }
 
 .quick-link svg {
   color: var(--wa);
 }
 
-/* ------------------------------ footer --------------------------- */
-.footer {
-  position: relative;
-  background: linear-gradient(180deg, var(--forest) 0%, var(--forest-3) 100%);
-  color: rgba(251, 247, 238, 0.8);
-  padding-bottom: 34px;
-  overflow: hidden;
+/* ------------------------ order responsive ----------------------- */
+/* the badge and the handwritten note need room beside the heading, so they
+   only appear once the viewport can carry them */
+@media (max-width: 1120px) {
+  .order__note,
+  .order__badge {
+    display: none;
+  }
 }
 
+@media (max-width: 900px) {
+  .order__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order__plate {
+    opacity: 0.2;
+  }
+
+  .order__plate--left {
+    left: -14%;
+    bottom: 2%;
+  }
+
+  .order__plate--right {
+    right: -14%;
+    top: 2%;
+  }
+}
+
+@media (max-width: 520px) {
+  .order__grid {
+    gap: 18px;
+  }
+
+  .order-form {
+    padding: 22px 18px;
+    border-radius: 26px;
+  }
+
+  .order-aside {
+    padding: 24px 18px;
+    border-radius: 26px;
+  }
+
+  .order .btn--whatsapp {
+    min-height: 56px;
+    padding: 0 20px;
+    font-size: 0.95rem;
+  }
+
+  .chip {
+    flex: 1 1 100%;
+    justify-content: flex-start;
+  }
+
+  .order__plate {
+    opacity: 0.14;
+  }
+}
+
+/* ------------------------------ footer --------------------------- */
+/*
+ * The closing botanical scene: a layered forest ground, out-of-focus herbs
+ * framing the edges, the brand column, three link columns, a central
+ * editorial message, the trust bar and the copyright.  Every rule is scoped
+ * to .footer so no other section inherits a single declaration.
+ */
+.footer {
+  --ft-bg-1: #082819;
+  --ft-bg-2: #0d3220;
+  --ft-bg-3: #123d27;
+  --ft-green: #1a4a30;
+  --ft-green-2: #214f34;
+  --ft-gold: #c89d3c;
+  --ft-gold-2: #d9b45a;
+  --ft-gold-3: #e5ca82;
+  --ft-text: #f5f0df;
+  --ft-text-soft: #dce5d4;
+  --ft-muted: #aebeaf;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: clamp(22px, 3vw, 34px);
+  color: var(--ft-text-soft);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(33, 79, 52, 0.5), transparent 58%),
+    linear-gradient(180deg, var(--ft-bg-1) 0%, var(--ft-bg-2) 44%, #061d13 100%);
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 3;
+  width: min(100% - 40px, 1380px);
+  margin-inline: auto;
+}
+
+/* -------------------------- canopy ground ------------------------ */
+.footer__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer__glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.footer__glow--top {
+  left: 50%;
+  top: -34%;
+  width: min(1180px, 120vw);
+  aspect-ratio: 1 / 0.6;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(58, 122, 79, 0.34), transparent 66%);
+  filter: blur(28px);
+}
+
+.footer__glow--bottom {
+  left: 18%;
+  bottom: -42%;
+  width: min(760px, 90vw);
+  aspect-ratio: 1;
+  background: radial-gradient(circle, rgba(200, 157, 60, 0.12), transparent 68%);
+  filter: blur(40px);
+}
+
+.footer__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(3, 12, 8, 0) 34%, rgba(3, 12, 8, 0.55) 78%, rgba(2, 8, 5, 0.9) 100%),
+    linear-gradient(180deg, rgba(4, 14, 9, 0.65), transparent 22%);
+}
+
+/* faint drawn branches, far behind everything */
+.footer__branch {
+  position: absolute;
+  opacity: 0.24;
+  pointer-events: none;
+}
+
+.footer__branch--left {
+  left: -6%;
+  top: 8%;
+}
+
+.footer__branch--right {
+  right: -6%;
+  bottom: 6%;
+}
+
+/* out-of-focus herbs framing the four corners */
+.footer__herb {
+  position: absolute;
+  display: block;
+  border-radius: 46%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.footer__herb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.footer__herb--tl {
+  left: -11%;
+  top: -8%;
+}
+
+.footer__herb--bl {
+  left: -9%;
+  bottom: -10%;
+}
+
+.footer__herb--tr {
+  right: -8%;
+  top: -6%;
+}
+
+.footer__herb--br {
+  right: -10%;
+  bottom: -12%;
+}
+
+/* tiny leaves adrift in the margins */
+.footer__particles {
+  position: absolute;
+  inset: 0;
+}
+
+.footer__particle {
+  position: absolute;
+  display: block;
+  opacity: 0.4;
+  animation: footer-drift 22s ease-in-out infinite;
+}
+
+@keyframes footer-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(var(--ft-dx, 8px), var(--ft-dy, -14px), 0) rotate(var(--ft-rot, 10deg));
+  }
+  66% {
+    transform: translate3d(calc(var(--ft-dx, 8px) * -0.6), calc(var(--ft-dy, -14px) * 0.6), 0)
+      rotate(calc(var(--ft-rot, 10deg) * -0.5));
+  }
+}
+
+
+
+/* --------------------------- footer grid ------------------------- */
+/*
+ * Brand 30% | Explore 15% | Products 20% | Contact 25%, with the botanical
+ * decoration living entirely in the background layer.
+ */
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.8fr 1fr 1.1fr;
-  gap: clamp(22px, 3vw, 40px);
-  padding: clamp(44px, 6vw, 72px) 0 clamp(30px, 4vw, 48px);
+  grid-template-columns: 1.5fr 0.75fr 1fr 1.25fr;
+  gap: clamp(24px, 3.4vw, 52px);
+  padding: clamp(46px, 6vw, 78px) 0 clamp(26px, 3.4vw, 44px);
+  align-items: start;
 }
 
-.footer__brand h3 {
-  margin: 14px 0 4px;
-  font-size: 1.7rem;
-  color: var(--cream);
+/* --------------------------- brand column ------------------------ */
+.footer__logo {
+  display: inline-grid;
+  place-items: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 157, 60, 0.4);
+  background: radial-gradient(circle, rgba(26, 74, 48, 0.55), rgba(6, 29, 19, 0.2));
+  box-shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.9), inset 0 0 22px rgba(229, 202, 130, 0.08);
+}
+
+.footer__wordmark {
+  margin: 16px 0 2px;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+  line-height: 1.1;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--ft-text);
 }
 
-.footer__brand h3 em {
+.footer__wordmark em {
   font-style: italic;
-  color: var(--gold-2);
+  font-weight: 500;
+  letter-spacing: 0.03em;
   text-transform: none;
+  color: var(--ft-gold-3);
 }
 
 .footer__tamil {
-  font-size: 0.9rem;
-  color: var(--gold-2);
+  font-size: 0.94rem;
+  color: var(--ft-gold-2);
   margin-bottom: 12px;
+}
+
+/* Pure Herbs / Happier You - the decorative editorial line */
+.footer__script {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.7vw, 1.32rem);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: rgba(229, 202, 130, 0.72);
+  margin-bottom: 14px;
+}
+
+.footer__script--contact {
+  margin: clamp(18px, 3vw, 30px) 0 0;
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  color: rgba(174, 190, 175, 0.72);
 }
 
 .footer__text {
   font-size: 0.92rem;
-  margin-bottom: 18px;
-  max-width: 34ch;
+  line-height: 1.72;
+  color: rgba(245, 240, 223, 0.76);
+  max-width: 36ch;
+  margin-bottom: 22px;
 }
 
+/* ------------------------------ CTA ------------------------------ */
+.footer__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 54px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ft-text);
+  background: linear-gradient(135deg, #1d5436, #123d27 60%, #0f3322);
+  border: 1px solid rgba(200, 157, 60, 0.55);
+  box-shadow: 0 18px 34px -20px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(229, 202, 130, 0.16);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.footer__cta svg {
+  color: #4ade80;
+}
+
+.footer__cta-arrow {
+  transition: transform 0.35s ease;
+}
+
+.footer__cta:hover {
+  transform: translateY(-2px);
+  border-color: var(--ft-gold-3);
+  box-shadow: 0 22px 42px -20px rgba(200, 157, 60, 0.55), inset 0 1px 0 rgba(229, 202, 130, 0.22);
+}
+
+.footer__cta:hover .footer__cta-arrow {
+  transform: translateX(4px);
+}
+
+.footer__cta:focus-visible {
+  outline: 2px solid var(--ft-gold-3);
+  outline-offset: 4px;
+}
+
+/* --------------------------- trust badges ------------------------ */
+.footer__badges {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1.4vw, 16px);
+  margin-top: clamp(22px, 3vw, 30px);
+  list-style: none;
+}
+
+.footer__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.footer__badge-ring {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 157, 60, 0.5);
+  background: rgba(26, 74, 48, 0.32);
+  color: var(--ft-gold-3);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.footer__badge:hover .footer__badge-ring {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -14px rgba(200, 157, 60, 0.8);
+}
+
+.footer__badge-text {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  line-height: 1.42;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(220, 229, 212, 0.82);
+}
+
+
+/* --------------------------- link columns ------------------------ */
 .footer__col h4 {
   font-family: var(--font-sans);
-  font-size: 0.76rem;
-  letter-spacing: 0.24em;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--gold-2);
-  margin-bottom: 16px;
+  color: var(--ft-gold-2);
+  margin-bottom: 18px;
 }
 
 .footer__col ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 4px;
+  list-style: none;
 }
 
 .footer__col button,
 .footer__col a {
-  font-size: 0.92rem;
-  color: rgba(251, 247, 238, 0.78);
-  transition: color 0.3s ease, transform 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  font-size: 0.92rem;
+  text-align: left;
+  color: rgba(245, 240, 223, 0.78);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer__col button span,
+.footer__col a span {
+  position: relative;
+}
+
+/* the underline that grows out of the label on hover */
+.footer__col button span::after,
+.footer__col a span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1px;
+  background: var(--ft-gold-2);
+  transition: right 0.35s ease;
+}
+
+.footer__col button:focus-visible,
+.footer__col a:focus-visible {
+  outline: 2px solid var(--ft-gold-3);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.footer__link-arrow {
+  flex: none;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.3s ease, transform 0.35s ease;
 }
 
 .footer__col button:hover,
 .footer__col a:hover {
-  color: var(--gold-2);
+  color: var(--ft-gold-3);
   transform: translateX(4px);
 }
 
-.footer__contact svg {
-  color: var(--wa);
+.footer__col button:hover .footer__link-arrow,
+.footer__col a:hover .footer__link-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.footer__col button:hover span::after,
+.footer__col a:hover span::after {
+  right: 0;
+}
+
+.footer__leaf-icon {
+  flex: none;
+  color: rgba(158, 201, 143, 0.7);
+  transition: color 0.3s ease;
+}
+
+.footer__col a:hover .footer__leaf-icon {
+  color: var(--ft-gold-2);
+}
+
+/* --------------------------- contact ----------------------------- */
+.footer__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.16rem, 2vw, 1.42rem);
+  color: var(--ft-gold-3);
+  transition: color 0.3s ease;
+}
+
+.footer__phone-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  background: rgba(37, 211, 102, 0.14);
+  color: #4ade80;
+}
+
+.footer__phone:hover {
+  color: var(--ft-text);
 }
 
 .footer__muted {
   font-size: 0.84rem;
-  color: rgba(251, 247, 238, 0.5);
-  max-width: 30ch;
+  line-height: 1.66;
+  color: var(--ft-muted);
+  margin-top: 10px;
+  max-width: 32ch;
 }
 
+/* ------------------------ central message ------------------------ */
+.footer__coda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 30px);
+  padding: clamp(20px, 3vw, 30px) 0 clamp(26px, 3.4vw, 40px);
+}
+
+.footer__coda-art {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  opacity: 0.68;
+}
+
+.footer__coda-text {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.1vw, 1.6rem);
+  line-height: 1.42;
+  letter-spacing: 0.03em;
+  color: rgba(229, 202, 130, 0.68);
+}
+
+/* --------------------------- trust bar --------------------------- */
+.footer__strip-wrap {
+  padding-bottom: clamp(22px, 3vw, 34px);
+}
+
+.footer__strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 22px;
+  padding: 16px clamp(18px, 3vw, 32px);
+  border-radius: 22px;
+  border: 1px solid rgba(200, 157, 60, 0.34);
+  background: linear-gradient(180deg, rgba(26, 74, 48, 0.4), rgba(9, 39, 25, 0.5));
+  box-shadow: inset 0 1px 0 rgba(229, 202, 130, 0.1), 0 20px 40px -30px rgba(0, 0, 0, 0.9);
+  list-style: none;
+}
+
+.footer__strip-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+  color: rgba(245, 240, 223, 0.86);
+}
+
+.footer__strip-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid rgba(200, 157, 60, 0.45);
+  background: rgba(200, 157, 60, 0.1);
+  color: var(--ft-gold-3);
+}
+
+.footer__strip-sep {
+  display: block;
+  width: 1px;
+  height: 20px;
+  margin-right: 12px;
+  background: linear-gradient(180deg, transparent, rgba(200, 157, 60, 0.55), transparent);
+}
+
+/* ---------------------------- divider ---------------------------- */
+.footer__rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: clamp(18px, 2.4vw, 26px);
+}
+
+.footer__rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 157, 60, 0.5));
+}
+
+.footer__rule-line--end {
+  background: linear-gradient(270deg, transparent, rgba(200, 157, 60, 0.5));
+}
+
+.footer__rule-leaf {
+  flex: none;
+  display: grid;
+  place-items: center;
+  opacity: 0.9;
+}
+
+/* --------------------------- copyright --------------------------- */
 .footer__bottom {
   display: flex;
   flex-direction: column;
   gap: 8px;
   align-items: center;
   text-align: center;
-  padding-top: 22px;
-  border-top: 1px solid rgba(230, 205, 140, 0.18);
+  padding-bottom: 6px;
   font-size: 0.8rem;
-  color: rgba(251, 247, 238, 0.55);
+  color: rgba(174, 190, 175, 0.82);
 }
 
-.footer__bottom .tamil {
-  color: var(--gold-2);
+.footer__bottom-tamil {
+  font-size: 0.88rem;
+  color: var(--ft-gold-2);
 }
+
+
+/* ----------------------- footer responsive ----------------------- */
+/* 1180px - the four zones no longer fit side by side: brand takes the full
+   row and the three link columns share the row underneath. */
+@media (max-width: 1180px) {
+  .footer__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(22px, 3vw, 38px);
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+    padding-bottom: clamp(16px, 2.4vw, 26px);
+    border-bottom: 1px solid rgba(200, 157, 60, 0.16);
+  }
+
+  .footer__badges {
+    max-width: 560px;
+  }
+}
+
+/* 860px - the mobile composition proper: one column, in reading order. */
+@media (max-width: 860px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(26px, 5vw, 38px);
+    padding-top: clamp(38px, 7vw, 54px);
+  }
+
+  .footer__brand {
+    display: block;
+  }
+
+  .footer__logo {
+    width: 84px;
+    height: 84px;
+  }
+
+  .footer__text {
+    max-width: none;
+  }
+
+  .footer__badges {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 340px;
+  }
+
+  .footer__strip {
+    flex-direction: column;
+    gap: 14px;
+    padding: 18px 20px;
+  }
+
+  .footer__strip-item {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* the vertical separators read wrong once the bar stacks */
+  .footer__strip-sep {
+    display: none;
+  }
+
+  .footer__coda {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer__coda-art {
+    align-items: center;
+  }
+
+  .footer__coda-branch {
+    display: none;
+  }
+
+  /* the canopy stays out at the edges and softer at this width */
+  .footer__herb {
+    opacity: 0.11;
+  }
+
+  .footer__herb--tl,
+  .footer__herb--tr {
+    top: -12%;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__inner {
+    width: min(100% - 32px, 1380px);
+  }
+
+  .footer__cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer__phone {
+    font-size: 1.1rem;
+  }
+
+  .footer__particle:nth-child(n + 5) {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .footer__badges {
+    grid-template-columns: 1fr;
+    max-width: 240px;
+  }
+
+  .footer__wordmark {
+    font-size: 1.32rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__particle {
+    animation: none;
+  }
+
+  .footer__cta,
+  .footer__cta-arrow,
+  .footer__col button,
+  .footer__col a,
+  .footer__link-arrow,
+  .footer__badge-ring {
+    transition: none;
+  }
+
+  .footer__col button:hover,
+  .footer__col a:hover,
+  .footer__cta:hover {
+    transform: none;
+  }
+}
+
 
 /* ------------------------- floating widgets ---------------------- */
 .to-top {
@@ -5806,11 +7003,25 @@ h5 {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(251, 247, 238, 0.92);
-  border: 1px solid rgba(200, 162, 74, 0.4);
+  background: rgba(251, 247, 238, 0.94);
+  border: 1px solid rgba(200, 162, 74, 0.45);
   color: var(--forest);
   box-shadow: var(--shadow);
   backdrop-filter: blur(8px);
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.to-top:hover {
+  background: var(--forest-2);
+  border-color: rgba(229, 202, 130, 0.7);
+  color: var(--cream);
+  box-shadow: 0 22px 40px -20px rgba(20, 48, 31, 0.85);
+}
+
+.to-top:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
 }
 
 .wa-float {
@@ -5825,7 +7036,23 @@ h5 {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--wa), var(--wa-dark));
   color: #fff;
-  box-shadow: 0 18px 34px -14px rgba(18, 140, 74, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(229, 202, 130, 0.45),
+    0 0 22px rgba(200, 162, 74, 0.28),
+    0 18px 34px -14px rgba(18, 140, 74, 0.8);
+  transition: box-shadow 0.35s ease;
+}
+
+.wa-float:hover {
+  box-shadow:
+    0 0 0 1px rgba(229, 202, 130, 0.7),
+    0 0 30px rgba(200, 162, 74, 0.45),
+    0 22px 40px -14px rgba(18, 140, 74, 0.9);
+}
+
+.wa-float:focus-visible {
+  outline: 3px solid var(--gold-2);
+  outline-offset: 3px;
 }
 
 .wa-float__ring {
@@ -5944,10 +7171,6 @@ h5 {
 
   .modal__grid {
     grid-template-columns: 1fr;
-  }
-
-  .footer__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -6100,10 +7323,6 @@ h5 {
      * width, so keep them out of the copy
      */
     display: none;
-  }
-
-  .footer__grid {
-    grid-template-columns: 1fr;
   }
 
   .wa-float {

@@ -25,11 +25,13 @@ const initials = (name) => name.trim().charAt(0).toUpperCase() || '\u00b7'
 const wrap = (i) => (i + testimonials.length) % testimonials.length
 
 /* The trust strip reads straight from the benefits data, so it can never
-   claim anything the rest of the page does not already claim. */
+   claim anything the rest of the page does not already claim.  Matched on
+   the English title because the Tamil literals that used to live here were
+   stored double-encoded, which is why the strip rendered empty. */
 const TRUST_ICONS = { Leaf, Home, Ban, HeartHandshake }
-const TRUST_TAMIL = ['100% à®‡à®¯à®±à¯à®•à¯ˆ', 'à®°à®šà®¾à®¯à®©à®™à¯à®•à®³à¯ à®‡à®²à¯à®²à¯ˆ', 'à®µà¯€à®Ÿà¯à®Ÿà®¿à®²à¯ à®¤à®¯à®¾à®°à®¿à®ªà¯à®ªà¯', 'à®…à®©à¯à®ªà¯à®Ÿà®©à¯ à®¤à®¯à®¾à®°à¯']
+const TRUST_BENEFITS = ['100% Organic', 'Homemade Care', 'No Chemicals', 'Made With Love']
 const trustStrip = benefits
-  .filter((b) => TRUST_TAMIL.includes(b.tamil))
+  .filter((b) => TRUST_BENEFITS.includes(b.title))
   .map((b) => ({ ta: b.tamil, en: b.title, Icon: TRUST_ICONS[b.icon] || Leaf }))
 
 /* The active card travels in from whichever side you navigated to. */

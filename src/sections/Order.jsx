@@ -1,16 +1,50 @@
 import { useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Check, Clock, Phone, Send } from 'lucide-react'
+import { Check, Clock, MapPin, Package, Phone, Send, User } from 'lucide-react'
 import { products } from '../data/products.js'
 import { site } from '../data/site.js'
 import { whatsappLink, orderLink } from '../lib/links.js'
-import SectionHeading from '../components/ui/SectionHeading.jsx'
-import Reveal from '../components/ui/Reveal.jsx'
 import WhatsAppIcon from '../components/ui/WhatsAppIcon.jsx'
-import { Branch } from '../components/art/Ornaments.jsx'
-import { LeafMark } from '../components/art/Ornaments.jsx'
+import { Branch, LeafDivider, LeafShape } from '../components/art/Ornaments.jsx'
+import { CardLineArt } from '../components/art/BotanicalFrame.jsx'
+
+/* The two herbal still-lives that lean against the section edges. */
+import ritualStillLife from '../assets/ritual-still-life.jpg'
+import oilStillLife from '../assets/products/oil-card.jpg'
 
 const initialForm = { name: '', place: '', quantity: '', note: '' }
+
+/**
+ * The section's own reveal - a short 20px lift / 20px slide rather than the
+ * site-wide 46-64px travel, so the form and the WhatsApp panel settle in
+ * gently instead of flying across the section.
+ */
+function Lift({ children, className = '', delay = 0, from = 'up', duration = 0.6, amount = 0.25 }) {
+  const reduce = useReducedMotion()
+
+  if (reduce) {
+    return <div className={className}>{children}</div>
+  }
+
+  const hidden =
+    from === 'left'
+      ? { opacity: 0, x: -20 }
+      : from === 'right'
+        ? { opacity: 0, x: 20 }
+        : { opacity: 0, y: 20 }
+
+  return (
+    <motion.div
+      className={className}
+      initial={hidden}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, amount }}
+      transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  )
+}
 
 /**
  * Order panel. There is no backend: the form builds a tidy WhatsApp
@@ -57,21 +91,75 @@ export default function Order() {
     <section className="order section" id="order">
       <div className="order__bg" aria-hidden="true">
         <span className="blob blob--6" />
+        <span className="order__glow" />
       </div>
       <Branch className="ornament ornament--right" width={260} flip tone="#4d7a4a" />
 
+      {/* the two herbal still-lives leaning on the section edges */}
+      <span className="order__plate order__plate--left" aria-hidden="true">
+        <img src={ritualStillLife} alt="" loading="lazy" decoding="async" />
+      </span>
+      <span className="order__plate order__plate--right" aria-hidden="true">
+        <img src={oilStillLife} alt="" loading="lazy" decoding="async" />
+      </span>
+
       <div className="container">
-        <SectionHeading
-          eyebrow="ORDER & CONTACT"
-          title="Two taps and it is"
-          highlight="on the way"
-          tamil="வாட்ஸ்அப் ஆர்டர்"
-          text="Fill this in and we will open WhatsApp with your order ready to send. Prefer to chat first? Just tap the number."
-        />
+        <div className="order__head">
+          <p className="order__note" aria-hidden="true">
+            Simple Orders,
+            <br />
+            Natural Care
+          </p>
+
+          <span className="order__badge" aria-hidden="true">
+            <LeafShape size={20} tone="#c79a3b" />
+            <span className="order__badge-text">
+              Traditional
+              <br />
+              Herbal Care
+              <br />
+              at your
+              <br />
+              fingertips
+            </span>
+          </span>
+
+          <div className="section-heading section-heading--center order__heading">
+            <Lift duration={0.6}>
+              <span className="eyebrow">
+                <LeafShape size={13} tone="#7c9885" className="order__eyebrow-leaf" />
+                Order &amp; Contact
+              </span>
+            </Lift>
+
+            <Lift delay={0.08} duration={0.7}>
+              <h2 className="section-title">
+                Two taps and it is <em className="title-accent">on the way</em>
+              </h2>
+            </Lift>
+
+            <Lift delay={0.14} duration={0.7}>
+              <p className="section-tamil tamil">வாட்ஸ்அப் ஆர்டர்</p>
+            </Lift>
+
+            <Lift delay={0.18} duration={0.6}>
+              <LeafDivider />
+            </Lift>
+
+            <Lift delay={0.22} duration={0.7}>
+              <p className="section-text">
+                Fill this in and we will open WhatsApp with your order ready to send. Prefer to chat
+                first? Just tap the number.
+              </p>
+            </Lift>
+          </div>
+        </div>
 
         <div className="order__grid">
-          <Reveal direction="right" duration={0.9}>
+          <Lift from="left" duration={0.8}>
             <form className="order-form" onSubmit={submit}>
+              <CardLineArt className="order-form__lineart" />
+
               <div className="order-form__header">
                 <span className="order-form__label">START YOUR ORDER</span>
                 <p className="order-form__sub">
@@ -82,11 +170,17 @@ export default function Order() {
               <div className="order-form__row">
                 <label className="field">
                   <span>Your name *</span>
-                  <input value={form.name} onChange={update('name')} placeholder="e.g. Lakshmi" required />
+                  <span className="field__control">
+                    <User size={17} className="field__icon" aria-hidden="true" />
+                    <input value={form.name} onChange={update('name')} placeholder="e.g. Lakshmi" required />
+                  </span>
                 </label>
                 <label className="field">
                   <span>City / town</span>
-                  <input value={form.place} onChange={update('place')} placeholder="e.g. Coimbatore" />
+                  <span className="field__control">
+                    <MapPin size={17} className="field__icon" aria-hidden="true" />
+                    <input value={form.place} onChange={update('place')} placeholder="e.g. Coimbatore" />
+                  </span>
                 </label>
               </div>
 
@@ -115,11 +209,14 @@ export default function Order() {
               <div className="order-form__row">
                 <label className="field">
                   <span>Quantity / pack size</span>
-                  <input
-                    value={form.quantity}
-                    onChange={update('quantity')}
-                    placeholder="e.g. 250g bath podi, 100ml oil"
-                  />
+                  <span className="field__control">
+                    <Package size={17} className="field__icon" aria-hidden="true" />
+                    <input
+                      value={form.quantity}
+                      onChange={update('quantity')}
+                      placeholder="e.g. 250g bath podi, 100ml oil"
+                    />
+                  </span>
                 </label>
               </div>
 
@@ -169,9 +266,9 @@ export default function Order() {
                 )}
               </AnimatePresence>
             </form>
-          </Reveal>
+          </Lift>
 
-          <Reveal direction="left" duration={0.9}>
+          <Lift from="right" duration={0.8} delay={0.06}>
             <aside className="order-aside">
               <motion.span
                 className="order-aside__seal"
@@ -217,7 +314,7 @@ export default function Order() {
                 ))}
               </div>
             </aside>
-          </Reveal>
+          </Lift>
         </div>
       </div>
     </section>
